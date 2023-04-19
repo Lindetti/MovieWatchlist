@@ -1,0 +1,8 @@
+.completed-wrapper {
+background-color: lightblue;
+height: 650px;
+width: 360px;
+display: flex;
+flex-direction: column;
+align-items: center;
+}

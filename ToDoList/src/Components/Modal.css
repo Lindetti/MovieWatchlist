@@ -1,0 +1,67 @@
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lavender;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    width: 350px;
+    height: 300px;
+    padding: 1rem;
+    color: white;
+}
+
+.closeDiv {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    padding-right: 0.5rem;
+  }
+
+  .close-x {
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .addItemText {
+    margin-top: 5rem;
+  }
+
+  form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  input {
+    padding: 1rem;
+    border: none;
+  }
+
+  .addItem {
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+  }
+
+
+.display-block {
+    display: block;
+  }
+  
+  .display-none {
+    display: none;
+  }
