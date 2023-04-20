@@ -2,10 +2,15 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+body {
+  background-color:  #1c1c1c;
+}
+
 .wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  color: white;
 }

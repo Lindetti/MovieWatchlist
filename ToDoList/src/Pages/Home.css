@@ -1,43 +1,114 @@
 .home-wrapper {
-    background-color: lavender;
-    height: 650px;
+    background-color:  #333333;
     width: 360px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.nextPage {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-
-.content {
+    height: 650px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: lightblue;
     gap: 1rem;
-    height: 100%;
-    width: 100%;
+    padding: 0.5rem;
+    color: white;
+    border-radius: 5px;
 }
 
-.addedItems {
-    height: 430px;
+.home-header {
+    text-align: center;
     width: 100%;
+    color: #f5a623;
+}
+
+.nextPage {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nextPage a {
+    color:  rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 1rem;
+    background-color: #f5a623;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.info {
+    margin-top: 2rem;
+}
+
+.formDiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:  #f1f1f1;
+}
+
+.addedMovies {
+    height: 350px;
+    width: 100%;
+    overflow: auto;
+}
+
+form {
+   width: 100%;
+   padding: 0.5rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 1rem;
+   border-top: 1px solid orange;
+   border-bottom: 1px solid orange;
+}
+
+.inputAndBtn {
+    display: flex;
+    gap: 1rem;
+}
+
+input {
+    padding: 1rem;
+}
+
+label {
+    font-size: 1.3rem;
+    color:  #f1f1f1;
+}
+
+.addMovie {
+   padding: 1rem 2rem;
+   background-color: #f5a623;
+   color: rgb(255, 255, 255);
+   border-radius: 5px;
+   font-size: 1.2rem;
+   cursor: pointer;
+}
+
+.addedMovies {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 0.5rem;
+    margin-top: 1rem;
 }
 
-.addedItem {
-    background-color: red;
-    height: 50px;
+.newMovie {
+    background-color:  #4d4d4d;
+    min-height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+}
+
+.newMovie p {
+    color: #f5a623;
 }
 
 .buttons {
@@ -45,22 +116,21 @@
     gap: 1rem;
 }
 
-.addToList {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 1rem;
-}
-
-.plus {
-    border-radius: 50%;
-    border: none;
-    height: 70px;
-    width: 70px;
+.home-completed {
+    background-color: #27ae60;
     cursor: pointer;
-    font-size: 2.5rem;
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    font-size: 1rem;
 }
 
-.completed  {
-    background-color: green;
+.home-delete {
+    background-color: red;
+    cursor: pointer;
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    font-size: 1rem;
 }
+

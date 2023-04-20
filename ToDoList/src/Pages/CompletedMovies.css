@@ -1,0 +1,100 @@
+.completedMovies-wrapper {
+    background-color:  #333333;
+    width: 360px;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    border-radius: 5px;
+}
+
+.completedMovies-header {
+   color: white;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.goBack {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+}
+
+.goBack a {
+    background-color: orange;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1.4rem;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.noMovies {
+    color: white;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.completedMovies-list {
+    height: 75%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow: auto;
+    border-top: 1px solid orange;
+    border-bottom: 1px solid orange;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+p {
+    font-size: 1.4rem;
+    color: white;
+}
+
+.watchedMovies {
+    background-color: #4d4d4d;
+    color: orange;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0.5rem;
+}
+
+.watchedMovies p {
+    font-size: 1.4rem;
+    color: #f5a623;
+}
+
+.deleteCompleted {
+    background-color: red;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.goBackDiv {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.goBackDiv a {
+    background-color: orange;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: white;
+    border-radius: 5px;
+}
