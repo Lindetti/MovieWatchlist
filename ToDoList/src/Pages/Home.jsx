@@ -1,66 +1,111 @@
 import "./Home.css";
 import {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
-import Modal from "../Components/Modal";
-import Completed from "./Completed";
+import {Link} from "react-router-dom";
 
 const Home = () => {
-const [isModalOpen, setIsModalOpen] = useState(false);
-const [items, setItems] = useState([]);
+const [movies, setMovies] = useState([]);
+const [movieInput, setMovieInput] = useState("");
+const [completedMovies, setCompletedMovies] = useState([]);
 
-const showModalFunc = () => {
-    setIsModalOpen(true);
-  };
-  
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const addItem = (item) => {
-    const updatedItems = [...items, item];
-    setItems(updatedItems);
-    localStorage.setItem('items', JSON.stringify(updatedItems));
-  };
-const deleteItem = (index) => {
-    const updatedItems = [...items];
-    updatedItems.splice(index, 1);
-    setItems(updatedItems);
+const handleOnChange = (event) => {
+    setMovieInput(event.target.value);
 }
 
-useEffect(() => {
-    const storedItems = localStorage.getItem('items');
-    if (storedItems) {
-      setItems(JSON.parse(storedItems));
+const addItem = (addNewMovie) => {
+const updatedMovies = [...movies, addNewMovie];
+setMovies(updatedMovies);
+localStorage.setItem('movies', JSON.stringify(updatedMovies));
+} 
+
+const deleteItem = (index) => {
+const updatedItems = [...movies];
+updatedItems.splice(index, 1);
+setMovies(updatedItems);
+localStorage.setItem('movies', JSON.stringify(updatedItems));
+}
+
+const handleComplete = (index) => {
+    const completedMovie = movies[index];
+    const updatedMovies = [...movies];
+    updatedMovies.splice(index, 1);
+    setMovies(updatedMovies);
+    const storedCompletedMovies = localStorage.getItem("completedMovies");
+    let updatedCompletedMovies = [];
+    if (storedCompletedMovies) {
+      updatedCompletedMovies = JSON.parse(storedCompletedMovies);
     }
-  }, []);
+    updatedCompletedMovies.push(completedMovie);
+    setCompletedMovies(updatedCompletedMovies);
+    localStorage.setItem(
+      "completedMovies",
+      JSON.stringify(updatedCompletedMovies)
+    );
+    localStorage.setItem("movies", JSON.stringify(updatedMovies)); // add this line to remove completed movie from local storage
+  };
+
+const handlesubmit = (event) => {
+    event.preventDefault();
+    addItem(movieInput);
+     setMovieInput("");
+ }
+
+    useEffect(() => {
+        const storedMovies = localStorage.getItem("movies");
+        if (storedMovies) {
+          setMovies(JSON.parse(storedMovies));
+        }
+
+        const storedCompletedMovies = localStorage.getItem("completedMovies");
+        if (storedCompletedMovies) {
+          setCompletedMovies(JSON.parse(storedCompletedMovies));
+        }
+      }, []);
 
     return (
         <div className="home-wrapper">
-        <div className="nextPage">
-        <Link className="completedBtn" to="/completedtask">My Completed Tasks</Link>
-        </div>
-        <div className="content">
-        <div className="addedItems">
-        {items.map((item, index) => {
+            <div className="home-header">
+            <h1>My Movies</h1>
+            </div>
+           <div className="nextPage">
+            <Link to="/completedmovies">My watched Movies</Link>
+           </div>
+           <div className="formDiv">
+           <form onSubmit={handlesubmit}>
+             <label>Add Movies to your watchlist</label>
+             <div className="inputAndBtn">
+            <input 
+            type="text" 
+            placeholder="add new movie.."
+            onChange={handleOnChange}
+            value={movieInput}
+            />
+            <button disabled={!movieInput} className="addMovie" type="submit">Add</button>
+            </div>
+            </form>
+            {movies.length === 0 ? (
+       <div className="info">
+         <h2>No movies in your watchlist yet</h2>
+       </div>
+      ) : (
+        <div className="addedMovies">
+          <p>My Watchlist: </p>
+          {movies.map((movie, index) => {
             return (
-                <div className="addedItem"  key={index}>
-                <p>{index + 1}: {item}</p>
+              <div className="newMovie" key={index}>
+                <p> {movie}</p>
                 <div className="buttons">
-                <button  >Completed</button>
-               <button onClick={() => deleteItem(index)}>Delete</button>
+                <button className="home-completed" onClick={() => handleComplete(index)}>
+                      Watched
+                    </button>
+                  <button className="home-delete" onClick={() => deleteItem(index)}>Delete</button>
                 </div>
-                </div>
+              </div>
             )
-        })}
+          })}
         </div>
-        
-        <div className="addToList">
-            <button className="plus" onClick={showModalFunc}>+</button>
-        </div>
-        </div>
-        <Modal showModal={isModalOpen} closeModal={closeModal} addItem={addItem}/>
+      )}
+           </div>
         </div>
     )
 }
-
 export default Home;
