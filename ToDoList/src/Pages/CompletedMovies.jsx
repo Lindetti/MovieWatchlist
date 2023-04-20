@@ -4,6 +4,8 @@ import "./CompletedMovies.css";
 
 const CompletedMovies = () => {
   const [completedMovies, setCompletedMovies] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filtered, setFiltered] = useState([]);
 
   useEffect(() => {
     const storedCompletedMovies = localStorage.getItem("completedMovies");
@@ -12,12 +14,26 @@ const CompletedMovies = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const filteredData = completedMovies.filter((movie) => {
+      return movie.toLowerCase().includes(search);
+    });
+    setFiltered(filteredData);
+  }, [completedMovies, search]);
+
+
   const handleDelete = (index) => {
     const updatedMovies = [...completedMovies];
     updatedMovies.splice(index, 1);
     setCompletedMovies(updatedMovies);
     localStorage.setItem("completedMovies", JSON.stringify(updatedMovies));
   };
+
+
+  const handleOnChange = (event) => {
+    setSearch(event.target.value);
+  };
+
 
   return (
     <div className="completedMovies-wrapper">
@@ -26,6 +42,15 @@ const CompletedMovies = () => {
       </div>
       <div className="goBack">
      <Link to="/">Back</Link>
+      <div className="search-movies">
+        <input
+          type="text"
+          id="movie-search"
+          onChange={handleOnChange}
+          onKeyUp={handleOnChange}
+          placeholder="search movie.."
+        />
+      </div>
      </div>
       {completedMovies.length === 0 ? (
        <div className="noMovies">
@@ -34,7 +59,7 @@ const CompletedMovies = () => {
       ) : (
         <div className="completedMovies-list"> 
         <p>Watched movies {completedMovies.length}: </p>
-          {completedMovies.map((movie, index) => (
+          {filtered.map((movie, index) => (
             <div className="watchedMovies" key={index}>
              <p> {movie} </p>
               <button className="deleteCompleted" onClick={() => handleDelete(index)}>Delete</button>

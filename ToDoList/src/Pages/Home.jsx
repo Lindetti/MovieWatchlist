@@ -75,7 +75,7 @@ const handlesubmit = (event) => {
              <div className="inputAndBtn">
             <input 
             type="text" 
-            placeholder="add new movie.."
+            placeholder="I will watch.."
             onChange={handleOnChange}
             value={movieInput}
             />
