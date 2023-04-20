@@ -16,7 +16,7 @@ const CompletedMovies = () => {
 
   useEffect(() => {
     const filteredData = completedMovies.filter((movie) => {
-      return movie.toLowerCase().includes(search);
+      return movie.toLowerCase().includes(search.toLowerCase());
     });
     setFiltered(filteredData);
   }, [completedMovies, search]);
