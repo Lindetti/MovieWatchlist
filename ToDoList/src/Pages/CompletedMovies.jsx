@@ -33,7 +33,7 @@ const CompletedMovies = () => {
        </div>
       ) : (
         <div className="completedMovies-list"> 
-        <p>Watched movies: </p>
+        <p>Watched movies {completedMovies.length}: </p>
           {completedMovies.map((movie, index) => (
             <div className="watchedMovies" key={index}>
              <p> {movie} </p>
